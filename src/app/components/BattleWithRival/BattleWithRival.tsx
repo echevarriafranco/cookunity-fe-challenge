@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAllPokemons } from '@/app/helpers/api';
+import { getAllPokemons, simulateBattle } from '@/app/helpers/api';
 import RivalSelectionSelector from '../RivalSelectionSelector/RivalSelectionSelector';
 import { IPokemon } from '@/app/types/IPokemon';
 
@@ -14,7 +14,7 @@ export default async function BattleWithRival() {
 
     return (
         <div className='flex flex-col mt-4 gap-4 '>
-            <RivalSelectionSelector rivals={allPokemons} />
+            <RivalSelectionSelector rivals={allPokemons} simulateBattleSA={simulateBattle} />
         </div>
     );
 }

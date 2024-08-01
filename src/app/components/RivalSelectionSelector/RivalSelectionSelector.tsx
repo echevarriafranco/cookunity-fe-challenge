@@ -1,6 +1,4 @@
-
 'use client'
-import { simulateBattle } from '@/app/helpers/api';
 import { Button, Select } from 'antd';
 import { useParams, usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -10,9 +8,11 @@ import { IPokemon } from '@/app/types/IPokemon';
 
 interface IProps {
     rivals: IPokemon[];
+    simulateBattleSA: (attackerId: string, defenderId: string) => Promise<any>;
+
 }
 
-export default function RivalSelectionSelector({ rivals }: IProps) {
+export default function RivalSelectionSelector({ rivals, simulateBattleSA }: IProps) {
     const attackerId: string = useParams().id as string
     const [selectedRival, setSelectedRival] = useState<string | null>()
     const [battleResult, setBattleResult] = useState<string | null>()
@@ -35,7 +35,7 @@ export default function RivalSelectionSelector({ rivals }: IProps) {
         try {
             setLoading(true)
             setBattleResult('')
-            const simulateBattleResult = await simulateBattle(attackerId, selectedRival!)
+            const simulateBattleResult = await simulateBattleSA(attackerId!, selectedRival!)
             setBattleResult(simulateBattleResult.isAttackerVictorious ? 'Attacker Wins!!!' : 'Defender Wins!!!')
             setLoading(false)
         } catch (error) {

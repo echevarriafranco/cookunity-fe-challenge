@@ -4,8 +4,6 @@ import Link from 'next/link';
 import React from 'react';
 
 export default function ErrorPage({ error }: { error?: Error }) {
-  console.error(error);
-
   return (
     <div>
       <Empty
