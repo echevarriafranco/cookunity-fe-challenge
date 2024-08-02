@@ -13,11 +13,13 @@ interface IProps {
 }
 
 export default async function CardsListing({ queryByName, queryByExpansion, type }: IProps) {
-    let data
+    let data: IPokemon[] = []
     try {
         data = await getAllPokemons(queryByName, queryByExpansion, type)
-    } catch (error) {
-        throw new Error()
+    } catch (error: any) {
+        if (error.statusCode !== 400) {
+            throw new Error()
+        }
     }
 
     return (

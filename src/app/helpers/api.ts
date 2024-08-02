@@ -20,7 +20,7 @@ export async function getAllPokemons(queryByName?: string, queryByExpansion?: st
       params.append('type', type);
     }
     url = `${url}?${params.toString()}`;
-    const response = await fetchWithAuth(url, { next: { revalidate: 10000 } });
+    const response = await fetchWithAuth(url,  { next: { revalidate: 12000 } });
     const data = await response.json();
     if (data.error) throw data.error
     return data;
@@ -32,7 +32,7 @@ export async function getAllPokemons(queryByName?: string, queryByExpansion?: st
 
 export async function getPokemonDetailsById(id: string): Promise<IPokemonExtendedModel> {
   try {
-    const response = await fetchWithAuth(`${process.env.NEXT_PUBLIC_API_URL}/pokemon-card/${id}/include-details`, { next: { revalidate: 10000 } });
+    const response = await fetchWithAuth(`${process.env.NEXT_PUBLIC_API_URL}/pokemon-card/${id}/include-details`, { next: { revalidate: 12000 } });
     const data = await response.json();
     if (data?.error) throw data.error
     return data;

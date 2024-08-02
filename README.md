@@ -1,16 +1,20 @@
+# - Frontend 
+- Install Dependencies
+- Run npm install to install the necessary dependencies.
+- Install Node.js
+- Ensure Node.js version 20.x is installed.
+- Important: When testing server components with Next.js, use npm run start to accurately simulate the production environment. The command npm run dev will work, but it won't replicate production conditions accurately.
 
-## Documentación
-- Se uso el template started de next js
-- Se anadio tailwind y antd para estilos y componentes UI
-- Se utilizo AG GRID (https://www.ag-grid.com/) para graficos y reportes
-- Se utilizaro ChatGPT para generacion de interfaces y mocks para la pantalla de reportes.
-- Se utilizo la API abierta de mercado libre para obtener productos y algunos detalles.
-    https://developers.mercadolibre.com.ar/es_ar/items-y-busquedas#
+- The frontend application has a 2-minute cache duration. This duration provides enough time to test data caching and observe application behavior. After 2 minutes, a refetch will occur to update the cached data.
+
+- API URL Configuration
+The API is set to point to localhost by default. 
+Make sure to update the environment variable NEXT_PUBLIC_API_URL in your environment configuration to reflect the actual server location:
+NEXT_PUBLIC_API_URL=http://localhost:3101
 
 
 
-## Como ejecutar el proyecto
-
+# 1 - How to Run the Project
 
 ```bash
  
