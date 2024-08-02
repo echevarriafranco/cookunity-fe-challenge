@@ -18,7 +18,7 @@ export default function LoginPage() {
       if ((error as any).message === 'unknown') {
         router.push('/error')
       }
-      setError((error as any).message)
+      setError('Invalid credentials.')
     }
   };
 
