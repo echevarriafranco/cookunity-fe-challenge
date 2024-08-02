@@ -32,7 +32,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 $ NEXT_PUBLIC_API_URL=http://localhost:3101
 
 # remote
-$ NEXT_PUBLIC_API_URL=https://cookunity-be-challenge-production.up.railway.app/
+$ NEXT_PUBLIC_API_URL=https://cookunity-be-challenge-production.up.railway.app
 
 ```
  
