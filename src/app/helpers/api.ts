@@ -20,7 +20,7 @@ export async function getAllPokemons(queryByName?: string, queryByExpansion?: st
       params.append('type', type);
     }
     url = `${url}?${params.toString()}`;
-    const response = await fetchWithAuth(url,  { next: { revalidate: 12000 } });
+    const response = await fetchWithAuth(url, { next: { revalidate: 12000 } });
     const data = await response.json();
     if (data.error) throw data.error
     return data;
@@ -70,14 +70,16 @@ export async function login(email: string, password: string): Promise<{ token: s
       body: JSON.stringify({ email, password }),
     });
 
-    if (!response.ok) {
+    if (response.status === 401) {
       throw new Error('Wrong credentials.');
+    }
+    if (!response.ok) {
+      throw new Error('unknown');
     }
     const data = await response.json();
     if (data.error) {
       throw new Error(data.error);
     }
-
     // store auth token
     await handleLogin(data.token)
     return data;

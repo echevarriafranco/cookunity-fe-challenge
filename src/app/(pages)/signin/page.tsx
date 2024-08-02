@@ -14,7 +14,10 @@ export default function LoginPage() {
       await login(values.email, values.password);
       router.push('/pokemons')
 
-    } catch (error) {
+    } catch (error: any) {
+      if ((error as any).message === 'unknown') {
+        router.push('/error')
+      }
       setError((error as any).message)
     }
   };
